@@ -11,19 +11,29 @@ const alertMsg = document.querySelectorAll('.alert-msg');
   input.forEach( ( cadaInput , i )=>{
     claim.addEventListener('click', (e)=>{
       e.preventDefault();
+      
+      const pattern =  /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+      if (mail.value == "") {
+        alertImg[i].classList.remove('active');
+        alertMsg[i].classList.remove('active');
+      } else if (!mail.value.match(pattern)) {
+        alertImgMail.classList.add('active');
+        alertMsgMail.classList.add('active');
+      } else {
+        alertMsgMail.classList.remove('active');
+      }
+
       console.log('esaa');
       alertImg[i].classList.remove('active');
       alertMsg[i].classList.remove('active');
-      alertMsgMail.classList.remove('active');
+      
       if (input[i].value == "") {
         alertImg[i].classList.add('active');
         alertMsg[i].classList.add('active');
       }
-      const pattern =  /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-      if (!mail.value.match(pattern)) {
-        alertImgMail.classList.add('active');
-        alertMsgMail.classList.add('active');
-      }
+
+      
+      
     })
   })
   
