@@ -32,7 +32,9 @@ const alertMsg = document.querySelectorAll('.alert-msg');
         alertMsg[i].classList.add('active');
       }
 
-      
+      if (input[i].value != "" && mail.value.match(pattern)) {
+        claim.value = 'THANK YOU!';
+      }
       
     })
   })
